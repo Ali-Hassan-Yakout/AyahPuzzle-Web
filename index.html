@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ترتيب آية من سورة النمل</title>
+  <style>
+    .word { display: inline-block; padding: 10px; margin: 5px; border: 1px solid #000; cursor: move; }
+    #dropzone { border: 2px dashed #aaa; padding: 20px; min-height: 50px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>رتب الكلمات لتكوين الآية الصحيحة من سورة النمل</h2>
+  <div id="words">
+    <span class="word" draggable="true">يا أيها</span>
+    <span class="word" draggable="true">ادخلوا</span>
+    <span class="word" draggable="true">النمل</span>
+    <span class="word" draggable="true">سليمان</span>
+    <span class="word" draggable="true">لا يحطمنكم</span>
+    <span class="word" draggable="true">مساكنكم</span>
+  </div>
+  <div id="dropzone"></div>
+  <button onclick="checkAnswer()">تحقق</button>
+  <p id="result"></p>
+
+  <script>
+    const dropzone = document.getElementById("dropzone");
+    const result = document.getElementById("result");
+
+    document.querySelectorAll(".word").forEach(word => {
+      word.addEventListener("dragstart", e => {
+        e.dataTransfer.setData("text/plain", word.textContent);
+      });
+    });
+
+    dropzone.addEventListener("dragover", e => e.preventDefault());
+
+    dropzone.addEventListener("drop", e => {
+      e.preventDefault();
+      const data = e.dataTransfer.getData("text/plain");
+      const span = document.createElement("span");
+      span.textContent = data;
+      span.className = "word";
+      dropzone.appendChild(span);
+    });
+
+    function checkAnswer() {
+      const correct = ["يا أيها", "النمل", "ادخلوا", "مساكنكم", "لا يحطمنكم", "سليمان"];
+      const userAnswer = Array.from(dropzone.children).map(el => el.textContent);
+      result.textContent = JSON.stringify(userAnswer) === JSON.stringify(correct) ? "إجابة صحيحة ✅" : "إجابة غير صحيحة ❌";
+    }
+  </script>
+</body>
+</html>
