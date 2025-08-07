@@ -1,0 +1,75 @@
+.mc-puzzle {
+  margin-top: 2rem;
+  text-align: center;
+}
+.question {
+  font-size: 1.2rem;
+  margin: 2rem 0 1.5rem 0;
+  color: #185a9d;
+  font-weight: bold;
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.option-btn {
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2rem;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.1s, transform 0.1s;
+}
+.option-btn.selected, .option-btn:hover {
+  background: #43cea2;
+  color: #fffbe7;
+  transform: scale(1.08);
+}
+.check-btn {
+  background: #43cea2;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s;
+}
+.check-btn:disabled {
+  background: #eee;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.result {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.result.success {
+  color: #43cea2;
+  animation: pop 0.5s;
+}
+.result.fail {
+  color: #ff4e50;
+  animation: shake 0.5s;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
