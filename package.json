@@ -1,7 +1,6 @@
 {
   "name": "workspace",
   "version": "1.0.0",
-  "main": "src/index.js",
   "scripts": {
     "start": "parcel src/index.html --open",
     "build": "parcel build src/index.html --dist-dir build --public-url ./"
